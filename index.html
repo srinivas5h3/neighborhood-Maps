@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Neighborhood Map</title>
+
+</head>
+<body>
+  <main>
+    <div id="page-content-wrap">
+        <h2 class="navbar">Neighborhood Map</h2>
+          <a href="#" data-bind="click: clickMe" class="btn btn-default toggke" id="toggke">+</a>
+    </div>
+    <article>
+      <div>
+        <div id="map"></div>
+      </div>
+    </article>
+
+    <div class="error-div-wrap">
+      <div class="no-map" data-bind="visible: mapError">
+        <p>Oops. Something is wrong with Google Maps! <br>Try again later.<br> Sorry for the inconvenience.</p>
+      </div>
+    </div>
+  </main>
+
+    <div id="wrap" data-bind="css: { 'toggled': visibleMenu }">
+      <div id="sidebar-wrap">
+        <div class="input-group">
+          <div class="row">
+            <div class="col-md-12 col-md-offset-1 search-area" id="search-area">
+              <br>
+              <input class="search-box" type="search" data-bind="textInput: filter">
+              <button data-bind='click: clearFilter'>reset</button>
+              <ul class="placesList" data-bind='foreach: filteredLocations'>
+                <li class="location-item" data-bind="text: locname, click: $root.selectLocation"></li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <script src="javascript/maps.js"></script>
+  <script src="javascript/base.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJN82jyncKuUH2KhS7toetmkEIZGAJPXM&callback=initMap" async defer onerror="error()"></script>
+</body>
+</html>
